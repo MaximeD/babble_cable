@@ -1,0 +1,11 @@
+= form_for @room do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label :name, class: 'label--required'
+        = f.text_field :name, class: 'form-control', required: true
+
+  .row
+    .col-md-12
+      .form-group
+        = f.submit t('.save'), class: 'btn btn-primary'

@@ -1,0 +1,7 @@
+h1= t '.title'
+
+ul
+  - @rooms.each do |room|
+    li= room.name
+
+= link_to t('.new_room'), new_room_path, class: 'btn btn-primary'

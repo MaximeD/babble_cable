@@ -1,2 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.label--required {
+  &:after {
+    content: ' *';
+    color: red;
+  }
+}
