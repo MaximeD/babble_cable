@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: babble_cable_development
+  database: <%= ENV['babble_cable_development_database'] %>
+  user: <%= ENV['babble_cable_development_user'] %>
+  password: <%= ENV['babble_cable_development_password'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +59,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: babble_cable_test
+  database: <%= ENV['babble_cable_test_database'] %>
+  user: <%= ENV['babble_cable_test_user'] %>
+  password: <%= ENV['babble_cable_test_password'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

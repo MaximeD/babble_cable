@@ -1,24 +1,17 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create and configure your postgresql database.
 
-Things you may want to cover:
+Create file `config/application.yml` with the following:
 
-* Ruby version
+```
+development:
+  babble_cable_development_database: <database name>
+  babble_cable_development_user: <user name>
+  babble_cable_development_password: <user password>
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+test:
+  babble_cable_test_database: <database name>
+  babble_cable_test_user: <user name>
+  babble_cable_test_password: <user password>
+```
