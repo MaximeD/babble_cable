@@ -1,0 +1,8 @@
+- if resource.errors.any?
+  .row
+    .col-md-12
+      #error_explanation.alert.alert-danger
+        button.close[data-dismiss='alert'] &times;
+        ul
+          - resource.errors.each do |_, message|
+            li= message
