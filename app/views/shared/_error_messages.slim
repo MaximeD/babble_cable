@@ -4,5 +4,5 @@
       #error_explanation.alert.alert-danger
         button.close[data-dismiss='alert'] &times;
         ul
-          - resource.errors.each do |_, message|
+          - resource.errors.full_messages.each do |message|
             li= message
