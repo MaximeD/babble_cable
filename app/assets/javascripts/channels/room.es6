@@ -3,7 +3,7 @@ document.addEventListener('turbolinks:load', () => {
   const roomId = document.querySelector('#room_id');
   const messageInput = document.querySelector('#message');
   const messageTemplate = document.querySelector('#message-template');
-  const messagesList = document.querySelector('#messages ul');
+  const messagesList = document.querySelector('#messages');
 
   App.room = App.cable.subscriptions.create(
     {
@@ -19,8 +19,8 @@ document.addEventListener('turbolinks:load', () => {
 
     // When a new message is received, display it on page.
     received(data) {
-      let message = messageTemplate.cloneNode();
-      message.innerHTML = markdown.toHTML(data.message);
+      let message = messageTemplate.cloneNode(true);
+      message.firstChild.innerHTML = markdown.toHTML(data.message);
       message.classList.remove('hidden');
       messagesList.insertBefore(message, messagesList.firstChild);
     },
@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
 
   // Bypass `Enter` key to broadcast message.
   messageInput.addEventListener('keypress', (event) => {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && !event.shiftKey) {
       if(event.target.value.length) {
         App.room.speak(event.target.value);
         event.target.value = '';

@@ -1,7 +1,15 @@
-= render 'form'
+.container
+  = render 'form'
 
-#messages
-  ul
-    li#message-template.hidden
-    - @messages.each do |message|
-      li= markdown(message.text)
+  hr
+
+  .row
+    .col-md-12
+      #messages
+        #message-template.block--fadingIn.hidden
+          .message
+          hr
+
+        - @messages.each do |message|
+          .message.block--fadingIn= markdown(message.text)
+          hr
