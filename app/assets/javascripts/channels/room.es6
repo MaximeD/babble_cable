@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', () => {
     // When a new message is received, display it on page.
     received(data) {
       let message = messageTemplate.cloneNode();
-      message.innerHTML = data.message;
+      message.innerHTML = markdown.toHTML(data.message);
       message.classList.remove('hidden');
       messagesList.insertBefore(message, messagesList.firstChild);
     },

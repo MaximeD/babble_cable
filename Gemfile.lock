@@ -81,6 +81,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    markdownjs-rails (1.0.2)
+      railties (>= 3.1)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -218,6 +220,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   listen (~> 3.0.5)
+  markdownjs-rails
   pg (~> 0.18)
   pry-rails
   puma (~> 3.0)
