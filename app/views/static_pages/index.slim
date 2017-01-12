@@ -1,0 +1,10 @@
+.jumbotron.text-center
+  h1= t '.title'
+  = image_tag 'logo.png', class: 'img-circle block--withMargins'
+
+  .row
+    .col-md-12
+      button.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#join_room")
+        = t('.join_room')
+
+= render 'rooms/modal_new'
