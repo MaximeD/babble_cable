@@ -11,9 +11,9 @@ class RoomChannel < ApplicationCable::Channel
 
   # Broadcast a message to channel.
   #
-  # @param [Hash] data: hash containing message to send
+  # @param [Hash] data: hash containing message to send and room
   def speak(data)
-    ActionCable.server.broadcast current_room, message: data['message']
+    Message.create!(text: data['message'], room_id: data['room_id'])
   end
 
   private

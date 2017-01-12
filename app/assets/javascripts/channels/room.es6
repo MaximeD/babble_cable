@@ -29,7 +29,7 @@ document.addEventListener('turbolinks:load', () => {
     speak(message) {
       this.perform('speak', {
         message: message,
-        room_id: room_id
+        room_id: roomId.value
       });
     }
   });

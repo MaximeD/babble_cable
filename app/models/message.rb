@@ -8,4 +8,7 @@ class Message < ApplicationRecord
 
   validates :text,
     presence: true
+
+  # Broadcasts messages into room after it has been created
+  after_create_commit { MessageBroadcastJob.perform_later self }
 end
