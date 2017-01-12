@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MessageBroadcastJob do
   describe '.perform' do
-    let(:message) { Message.new(text: 'test', room_id: 1) }
+    let(:message) { build :message, text: 'test', room_id: 1 }
     let(:server) do
       OpenStruct.new(broadcast: -> {}).tap do |server|
         allow(server).to receive(:broadcast)
