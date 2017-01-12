@@ -4,4 +4,4 @@
   ul
     li#message-template.hidden
     - @messages.each do |message|
-      li= message.text
+      li= markdown(message.text)
