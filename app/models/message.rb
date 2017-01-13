@@ -1,5 +1,8 @@
 # A {Message message} is some piece of text posted inside a {Room room}.
 #
+# A {Message message}
+# * belongs to a {Room room}
+#
 # Attributes:
 # * text [String] content of message
 

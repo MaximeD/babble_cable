@@ -1,4 +1,11 @@
 # A {Room room} is the place where users can exchange messages.
+#
+# A {Room room}
+# * has_many {Message messages}
+#
+# Attributes:
+# * name [String] name of the room
+# * subscribers_count [Integer] number of users subscribed to channel
 
 class Room < ApplicationRecord
   after_update :destroy_empty_room

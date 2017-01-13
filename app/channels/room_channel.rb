@@ -6,14 +6,14 @@ class RoomChannel < ApplicationCable::Channel
     stream_from current_room
   end
 
-  # End streaming when use unsubscribes.
+  # End streaming when user unsubscribes.
   def unsubscribed
     room.update_attributes subscribers_count: room.subscribers_count - 1
   end
 
   # Broadcast a message to channel.
   #
-  # @param [Hash] data: hash containing message to send and room
+  # @param data [Hash] hash containing message to send and room
   def speak(data)
     Message.create!(text: data['message'], room_id: data['room_id'])
   end
