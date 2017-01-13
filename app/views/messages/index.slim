@@ -1,4 +1,8 @@
 .container
+  = link_to root_path do
+    = image_tag 'logo.png', class: 'img-circle img--small', alt: t('.home')
+    span.span--marginLeft= t '.back_to_home'
+
   h1.text-center= @room.name
 
   = render 'form'
