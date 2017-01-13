@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#index'
 
-  resources :rooms do
-    resources :messages
+  resources :rooms, only: :create do
+    resources :messages, only: :index
   end
 end
