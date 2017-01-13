@@ -1,0 +1,5 @@
+fr:
+  rooms:
+    create:
+      error: Désolé mais nous n'avons pas pu vous connecter à cette salle…
+      welcome_to_room: 'Bienvenue sur %{room}, commencez à blablater.'

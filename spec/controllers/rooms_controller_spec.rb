@@ -1,35 +1,52 @@
 require 'rails_helper'
 
 RSpec.describe RoomsController do
-  describe 'GET #index' do
-    subject! { get :index }
-
-    it('assigns rooms') { expect(assigns(:rooms)).to_not be_nil }
-    it('renders index') { expect(subject).to render_template(:index) }
-  end
-
-  describe 'GET #new' do
-    subject! { get :new }
-
-    it('assigns room') { expect(assigns(:room)).to be_a Room }
-    it('renders new') { expect(subject).to render_template(:new) }
-  end
-
   describe 'POST #create' do
+    let!(:existing_room) do
+      build_stubbed(:room, name: 'existing').tap do |room|
+        allow(Room).to receive(:find_by)
+        allow(Room).to receive(:find_by).with(name: 'existing') { room }
+      end
+    end
+
+    let!(:new_room) do
+      Room.new.tap do |room|
+        allow(Room).to receive(:new) { room }
+      end
+    end
+
     let(:attributes) { { name: 'test' } }
 
     context 'with valid arguments' do
-      before { allow_any_instance_of(Room).to receive(:save) { true } }
-      subject! { post :create, params: { room: attributes } }
+      context 'when room already exists' do
+        subject! { post :create, params: { room: { name: 'existing' } } }
 
-      it('redirects to root_path') { expect(subject).to redirect_to root_path }
-    end
+        it 'redirects to room' do
+          expect(subject).to redirect_to room_messages_path(existing_room.id)
+        end
+      end
 
-    context 'with invalid arguments' do
-      before { allow_any_instance_of(Room).to receive(:save) { false } }
-      subject! { post :create, params: { room: attributes } }
+      context 'when room does not exist' do
+        before do
+          allow(new_room).to receive(:save) do
+            new_room.id = 1
+            true
+          end
+        end
 
-      it('renders new') { expect(subject).to render_template(:new) }
+        subject! { post :create, params: { room: attributes } }
+
+        it 'redirects to room' do
+          expect(subject).to redirect_to room_messages_path(new_room.id)
+        end
+      end
+
+      context 'with invalid arguments' do
+        before { allow(new_room).to receive(:save) { false } }
+        subject! { post :create, params: { room: attributes } }
+
+        it('redirects to root path') { expect(subject).to redirect_to root_path }
+      end
     end
   end
 end

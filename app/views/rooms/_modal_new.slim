@@ -1,0 +1,11 @@
+#join_room.modal.fade(tabindex='-1' role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times
+        h4 class="modal-title"
+          = t('.join_room')
+
+      .modal-body
+        = render 'rooms/form'
