@@ -1,3 +1,12 @@
+# BabbleCable
+
+This is an experiment with Rails's [ActionCable](http://edgeguides.rubyonrails.org/action_cable_overview.html).
+
+It gives you ephemeral chat rooms:
+go into one and start talking, when another user reaches a room with the same name
+as the one you created, he will be able to post there too.
+Once every users will leave the room, it will be destroyed along with all its messages.
+
 # Setup
 
 Create and configure your postgresql database.
