@@ -14,18 +14,27 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+
 default: &default
   adapter: postgresql
   encoding: unicode
+  database: babble_cable
+  username: babble_cable
+  password: babble_cable
+  pool: 5
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+
+# hint for the command line (dev only for secure reason) :
+# createuser babble_cable -s -d -r -l -e
+# then run
+# rake db:create
+# then
+# rake db:migrate
 development:
   <<: *default
-  database: <%= ENV['babble_cable_development_database'] %>
-  user: <%= ENV['babble_cable_development_user'] %>
-  password: <%= ENV['babble_cable_development_password'] %>
+  database: babble_cable_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -59,9 +68,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= ENV['babble_cable_test_database'] %>
-  user: <%= ENV['babble_cable_test_user'] %>
-  password: <%= ENV['babble_cable_test_password'] %>
+  database: babble_cable_test
+  password: babble_cable
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,5 +93,5 @@ test:
 production:
   <<: *default
   database: babble_cable_production
-  username: babble_cable
   password: <%= ENV['BABBLE_CABLE_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
