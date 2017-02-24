@@ -4,7 +4,7 @@
     span.span--marginLeft= t '.back_to_home'
 
   h1.text-center= @room.name
-
+  h6= raw "Room privéé accessible avec  : <br/> #{tokenize_session_room_url(@room.token)}" if @room.private?
   = render 'form'
 
   hr

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113165600) do
+ActiveRecord::Schema.define(version: 20170224210200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,13 @@ ActiveRecord::Schema.define(version: 20170113165600) do
 
   create_table "rooms", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "subscribers_count", default: 0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "subscribers_count", default: 0,     null: false
+    t.string   "token",             default: "",    null: false
+    t.boolean  "private",           default: false, null: false
+    t.index ["name"], name: "index_rooms_on_name", unique: true, using: :btree
+    t.index ["token"], name: "index_rooms_on_token", unique: true, using: :btree
   end
 
   add_foreign_key "messages", "rooms"
