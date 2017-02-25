@@ -46,6 +46,9 @@ class Room < ApplicationRecord
 
   # When a room is empty, il should be destroyed.
   def destroy_empty_room
-    destroy if subscribers_count.zero?
+    puts 'destroy order'
+    puts self.inspect
+    RoomsCleanupJob.set(wait: 42.second).perform_later(self)
   end
 end
+
