@@ -17,5 +17,5 @@
           hr
 
         - @messages.each do |message|
-          .message.block--fadingIn= markdown(message.text)
+          .message.block--fadingIn= raw(message.text)
           hr
