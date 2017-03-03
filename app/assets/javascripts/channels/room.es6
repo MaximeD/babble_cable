@@ -2,6 +2,8 @@ document.addEventListener('turbolinks:load', () => {
 
   const roomId = document.querySelector('#room_id');
   const messageInput = document.querySelector('#message');
+    const editorInput = document.querySelector('#editor');
+    const sendButton = document.querySelector('#send');
   const messageTemplate = document.querySelector('#message-template');
   const messagesList = document.querySelector('#messages');
 
@@ -20,7 +22,7 @@ document.addEventListener('turbolinks:load', () => {
     // When a new message is received, display it on page.
     received(data) {
       let message = messageTemplate.cloneNode(true);
-      message.firstChild.innerHTML = markdown.toHTML(data.message);
+      message.firstChild.innerHTML = data.message;
       message.classList.remove('hidden');
       messagesList.insertBefore(message, messagesList.firstChild);
     },
@@ -35,13 +37,14 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   // Bypass `Enter` key to broadcast message.
-  messageInput.addEventListener('keypress', (event) => {
-    if (event.keyCode === 13 && !event.shiftKey) {
-      if(event.target.value.length) {
-        App.room.speak(event.target.value);
-        event.target.value = '';
+    sendButton.addEventListener('click', (event) => {
+
+    //if (event.keyCode === 13 && !event.shiftKey) {
+      if(editorInput.value.length) {
+        App.room.speak(editorInput.value);
+          editorInput.value = '';
       }
       event.preventDefault();
-    }
+    //}
   });
 });
