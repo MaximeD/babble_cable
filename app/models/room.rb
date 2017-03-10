@@ -52,3 +52,15 @@ class Room < ApplicationRecord
   end
 end
 
+# == Schema Information
+#
+# Table name: rooms
+#
+#  id                :integer          not null, primary key
+#  name              :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  subscribers_count :integer          default(0), not null
+#  token             :string           default(""), not null
+#  private           :boolean          default(FALSE), not null
+#

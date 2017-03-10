@@ -25,6 +25,7 @@ gem 'pg', '~> 0.18'
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'annotate'
 end
 
 group :development do
