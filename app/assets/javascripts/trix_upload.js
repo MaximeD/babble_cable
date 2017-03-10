@@ -16,8 +16,8 @@ $(function() {
         var file, form, xhr;
         file = attachment.file;
         form = new FormData;
-        //form.append('Content-Type', file.type);
-        //form.append('image[image]', file);
+        form.append('Content-Type', file.type);
+        form.append('image[image]', file);
         xhr = new XMLHttpRequest;
         xhr.open('POST', '/uploads', true);
         xhr.upload.onprogress = function(event) {

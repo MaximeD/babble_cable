@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
 
     # doorkeep if necessary
     @room.authorize! session[:token]
+    session[:token] = @room.token
 
     @messages = @room.messages.order(created_at: :desc).limit(20)
   end

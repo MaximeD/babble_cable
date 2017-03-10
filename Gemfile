@@ -22,6 +22,8 @@ gem 'slim-rails', '~> 3.1.1'
 gem 'trix', '~> 0.10.1'
 gem 'pg', '~> 0.18'
 
+gem 'carrierwave', '~> 1.0'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
