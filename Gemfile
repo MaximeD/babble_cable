@@ -24,6 +24,8 @@ gem 'pg', '~> 0.18'
 
 gem 'carrierwave', '~> 1.0'
 
+gem 'lita', '~> 4.7.0'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
