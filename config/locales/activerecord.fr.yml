@@ -3,6 +3,7 @@ fr:
     attributes:
       room:
         name: Nom
+        private: Privé
 
     errors:
       messages:

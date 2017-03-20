@@ -6,23 +6,28 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-
-gem 'bootstrap-sass'
-gem 'figaro'
-gem 'jquery-rails'
-gem 'markdownjs-rails'
-gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.0'
-gem 'redcarpet'
-gem 'sass-rails', '~> 5.0'
-gem 'slim-rails'
-gem 'sprockets-es6'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+gem 'markdownjs-rails'
+gem 'puma', '~> 3.0'
+gem 'sprockets-es6'
+gem 'sass-rails', '~> 5.0'
+
+gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'figaro', '~> 1.1.1'
+gem 'redcarpet', '~> 3.4.0'
+gem 'slim-rails', '~> 3.1.1'
+gem 'trix', '~> 0.10.1'
+gem 'pg', '~> 0.18'
+
+gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'annotate'
 end
 
 group :development do

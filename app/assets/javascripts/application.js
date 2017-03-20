@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require markdown
 //= require turbolinks
+//= require trix
 //= require_tree .

@@ -1,0 +1,4 @@
+fr:
+  rooms:
+    tokenize_session:
+      error: Désolé mais votre token n'a pas été trouvé
