@@ -11,6 +11,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/es6"
 require "sprockets/railtie"
+#require 'carrierwave/orm/activerecord'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#index'
 
+  resource :search, only: :create
   resources :rooms, only: :create do
 
     member do
