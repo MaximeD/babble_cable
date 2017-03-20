@@ -1,0 +1,10 @@
+form ic-post-to="/search" ic-target="#target_span" ic-src="/search" ic-verb="POST" ic-trigger-on="default" ic-deps="ignore" class=""
+  = hidden_field_tag :room_id, @room.id
+  .row
+    .col-md-12
+      .form-group
+        input id="form-search" type="text" name="searched"
+        button id="form-button-1" type="submit" class="btn btn-default"
+         | Find me!
+        span id="target_span"
+          | You haven't searched

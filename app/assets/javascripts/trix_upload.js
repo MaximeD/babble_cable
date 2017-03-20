@@ -37,7 +37,7 @@ $(function() {
         };
         return xhr.send(form);
     };
-    deleteFile = function(n) {
+    /*deleteFile = function(n) {
         return $.ajax({
             type: 'DELETE',
             url: '/uploads/' + n.attachment.attributes.values.image_id,
@@ -45,5 +45,5 @@ $(function() {
             contentType: false,
             processData: false
         });
-    };
+    };*/
 });

@@ -6,7 +6,7 @@
 
 class RoomDocument < ApplicationRecord
 
-  belongs_to :room, dependent: :destroy
+  belongs_to :room
 
   validates :title,
     presence: true
@@ -25,9 +25,41 @@ class RoomDocument < ApplicationRecord
     self.uuid = SecureRandom.uuid
   end
 
+  def content_type=(content)
+    self.options ||= {}
+    self.options[:content_type] = content
+  end
+
+  def file_size=(size)
+    self.options ||= {}
+    self.options[:file_size] = size
+  end
+
+  def content_type
+    self.options['content_type']
+  end
+
+  def file_size
+    self.options['file_size']
+  end
+
+  def media_type
+    MIME::Types[content_type].first.media_type
+  end
+
+  def extensions_name
+    MIME::Types[content_type].first.extensions
+  end
+
+  def extension_name
+    MIME::Types[content_type].first.preferred_extension
+  end
+
   protected
   def set_defaults!
    self.title ||= self.element_identifier
+   self.state ||= :uploaded
+   self.options ||= {private:false}
   end
 end
 

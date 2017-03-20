@@ -12,7 +12,7 @@ class Room < ApplicationRecord
   before_create :add_token
 
   has_many :messages, dependent: :destroy
-  has_many :room_document, dependent: :destroy
+  has_many :room_documents, dependent: :destroy
 
   validates :name,
     presence: true,
