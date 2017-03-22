@@ -55,6 +55,19 @@ class RoomDocument < ApplicationRecord
     MIME::Types[content_type].first.preferred_extension
   end
 
+  def viewable?
+    # TODO : use class instead of if/case
+    ['image'].include? media_type
+  end
+
+  def view_for_media_type
+    # TODO : use class instead of if/case
+
+    if media_type=='image'
+      'image'
+    end
+  end
+
   protected
   def set_defaults!
    self.title ||= self.element_identifier

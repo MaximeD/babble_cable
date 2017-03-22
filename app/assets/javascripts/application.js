@@ -16,4 +16,7 @@
 //= require markdown
 //= require turbolinks
 //= require trix
+//= require transition.min
+//= require zoom.min
+//= require trix
 //= require_tree .
