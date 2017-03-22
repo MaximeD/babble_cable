@@ -2,7 +2,7 @@ class ElementUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -37,9 +37,30 @@ class ElementUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+
+  version :icon, :if => :image? do
+    process resize_to_fit: [32, 32]
+  end
+
+  version :thumb, :if => :image? do
+     process resize_to_fit: [64, 64]
+  end
+
+  version :small, :if => :image? do
+    process resize_to_fit: [320, 240]
+  end
+
+  version :medium, :if => :image? do
+    process resize_to_fit: [1280 , 720]
+  end
+
+  version :large, :if => :image? do
+    process resize_to_fit: [1920, 1080]
+  end
+
+  version :large_4k, :if => :image? do
+    process resize_to_fit: [4096, 2160]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -53,4 +74,23 @@ class ElementUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+
+  def image?(new_file=nil)
+    if new_file
+      new_file.content_type&.start_with? 'image'
+    else
+      model.content_type&.start_with? 'image'
+    end
+
+  end
+
+  def image_or_doc_url
+    if model.content_type&.start_with? 'image'
+      # TODO : adapt limit size to smaller if smaller
+      self.url(:small)
+    else
+      self.url
+    end
+
+  end
 end

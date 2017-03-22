@@ -21,12 +21,13 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'slim-rails', '~> 3.1.1'
 gem 'trix', '~> 0.10.1'
 gem 'pg', '~> 0.18'
-
+gem "mini_magick", '~> 4.6.1'
 gem 'carrierwave', '~> 1.0'
+gem 'action_cable_client'
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'pry-rails'
+  gem 'byebug'
   gem 'annotate'
 end
 

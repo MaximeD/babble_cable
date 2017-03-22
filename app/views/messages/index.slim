@@ -13,7 +13,7 @@
   hr
 
   .row
-    .col-md-8
+    .col-md-10
       #messages
         #message-template.block--fadingIn.hidden
           .message
@@ -22,8 +22,15 @@
         - @messages.each do |message|
           .message.block--fadingIn= raw(message.text)
           hr
-    .col-md-4
+    .col-md-2
+      / collapsible : docs + search with pop out + ...
+
       - @room.room_documents.each do |document|
         .row
           .col-md-12
-            h2 = document.extension_name
+            /TODO : use cells
+            - if document.viewable?
+              = render partial:"/scenics/#{document.view_for_media_type}", locals: { document: document }
+            - else
+              h2 = document.extension_name
+            hr
