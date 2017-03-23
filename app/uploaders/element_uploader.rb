@@ -81,7 +81,6 @@ class ElementUploader < CarrierWave::Uploader::Base
     else
       model.content_type&.start_with? 'image'
     end
-
   end
 
   def image_or_doc_url
@@ -91,6 +90,6 @@ class ElementUploader < CarrierWave::Uploader::Base
     else
       self.url
     end
-
   end
+
 end
