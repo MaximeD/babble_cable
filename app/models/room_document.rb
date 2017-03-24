@@ -71,6 +71,7 @@ class RoomDocument < ApplicationRecord
   protected
   def set_defaults!
    self.title ||= self.element_identifier
+   self.title = title.titleize
    self.state ||= :uploaded
    self.options ||= {private:false}
   end

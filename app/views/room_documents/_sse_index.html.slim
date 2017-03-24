@@ -1,9 +1,0 @@
-- room.room_documents.each do |document|
-  .row
-    .col-md-12
-      /TODO : use cells
-      - if document.viewable?
-        = render partial:"/scenics/#{document.view_for_media_type}", locals: { document: document }
-      - else
-        = render partial:"/scenics/base", locals: { document: document }
-      hr
