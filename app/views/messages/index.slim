@@ -3,7 +3,6 @@
     = image_tag 'logo.png', class: 'img-circle img--small', alt: t('.home')
     span.span--marginLeft= t '.back_to_home'
 
-
   h1.text-center= @room.name
   h6= raw "Recherche"
   = render 'search_form'
@@ -11,14 +10,12 @@
   = render 'form'
 
   hr
-
   .row
     .col-md-10
       #messages
         #message-template.block--fadingIn.hidden
           .message
           hr
-
         - @messages.each do |message|
           .message.block--fadingIn= raw(message.text)
           hr
@@ -32,5 +29,5 @@
             - if document.viewable?
               = render partial:"/scenics/#{document.view_for_media_type}", locals: { document: document }
             - else
-              h2 = document.extension_name
+              = render partial:"/scenics/base", locals: { document: document }
             hr
