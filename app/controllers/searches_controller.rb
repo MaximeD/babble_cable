@@ -4,9 +4,10 @@ class SearchesController < ApplicationController
 
   # POST /search
   def create
-    messages = Message.where("text LIKE ?", "%#{params[:searched]}%")
+    #TODO:  appliquer mine! sur room_id
+    @messages = Message.where(room_id:params[:room_id]).where("text LIKE ?", "%#{params[:searched]}%")
     respond_to do |format|
-      format.html { render layout:false, text: messages.pluck(:text).join('') }
+      format.html { render layout:false }
     end
   end
 

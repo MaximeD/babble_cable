@@ -3,7 +3,6 @@
     = image_tag 'logo.png', class: 'img-circle img--small', alt: t('.home')
     span.span--marginLeft= t '.back_to_home'
 
-
   h1.text-center= @room.name
   h6= raw "Recherche"
   = render 'search_form'
@@ -11,14 +10,12 @@
   = render 'form'
 
   hr
-
   .row
     .col-md-10
       #messages
         #message-template.block--fadingIn.hidden
           .message
           hr
-
         - @messages.each do |message|
           .message.block--fadingIn= raw(message.text)
           hr
@@ -26,4 +23,3 @@
       / collapsible : docs + search with pop out + ...
       div ic-sse-src="/uploads/sse_index"
         = render "/room_documents/sse_index", { room: @room }
-
