@@ -21,7 +21,7 @@ default: &default
   database: babble_cable
   username: babble_cable
   password: babble_cable
-  pool: 5
+  pool: 42
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
 

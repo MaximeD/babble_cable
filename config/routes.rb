@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#index'
 
   resource :search, only: :create
+
   resources :rooms, only: :create do
 
     member do
@@ -12,5 +13,10 @@ Rails.application.routes.draw do
 
     resources :messages, only: :index
   end
-  resources :uploads
+
+  resources :uploads do
+    collection do
+      get :sse_index
+    end
+  end
 end
