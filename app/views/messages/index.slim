@@ -24,13 +24,6 @@
           hr
     .col-md-2
       / collapsible : docs + search with pop out + ...
+      div ic-sse-src="/uploads/sse_index"
+        = render "/room_documents/sse_index", { room: @room }
 
-      - @room.room_documents.each do |document|
-        .row
-          .col-md-12
-            /TODO : use cells
-            - if document.viewable?
-              = render partial:"/scenics/#{document.view_for_media_type}", locals: { document: document }
-            - else
-              h2 = document.extension_name
-            hr
